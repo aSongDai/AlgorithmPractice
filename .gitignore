@@ -1,0 +1,5 @@
+AlgorithmPractice
+cs_view/*.vcxproj
+cs_view/*.user
+cs_view/*.filters
+.vs
