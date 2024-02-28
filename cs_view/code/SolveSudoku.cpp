@@ -39,7 +39,16 @@ public:
 		}
 
 		auto [i, j] = spaces[pos];					// struct bind (c++17)
-
+		for (int digit = 0; digit < 9 && !valid; ++digit)
+		{
+			if (!line[i][digit] && !column[digit][j] && !block[i/3][j/3][digit])
+			{
+				line[i][digit] = column[digit][j] = block[i/3][j/3][digit] = true;
+				board[i][j] = digit + '0' + 1;
+				dfs(board, pos + 1);
+				line[i][digit] = column[digit][j] = block[i/3][j/3][digit] = false;
+			}
+		}
 	}
 
 private:
