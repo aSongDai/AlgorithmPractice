@@ -1,6 +1,7 @@
 #include <vector>
 #include <string>
 #include <unordered_set>
+#include <iostream>
 
 class Solution
 {
@@ -51,12 +52,12 @@ public:
 					continue;
 				}
 
-				queenRowInd[i] = i;
+				queenRowInd[row] = i;
 				column.insert(i);
 				slash.insert(slashSum);
 				backSlash.insert(backSlaSum);
-				backTrace(result, queenRowInd, n, row, column, slash, backSlash);
-				queenRowInd[i] = -1;
+				backTrace(result, queenRowInd, n, row + 1, column, slash, backSlash);
+				queenRowInd[row] = -1;
 				column.erase(i);
 				slash.erase(slashSum);
 				backSlash.erase(backSlaSum);
@@ -71,9 +72,11 @@ public:
 		int queenNum = queenRowInd.size();
 		for (int i = 0; i < queenNum; ++i)
 		{
+			std::cout << "Queen row [ " << i << " ] index is: "<< queenRowInd[i] << "." << std::endl;
 			std::string row(queenNum, '.');
 			row[queenRowInd[i]] = 'Q';
 			ans.push_back(row);
+			std::cout << "rwo ["<< i << "] is " << row.data() << std::endl;
 		}
 		result.push_back(ans);
 	}
