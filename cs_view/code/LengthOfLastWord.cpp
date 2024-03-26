@@ -9,13 +9,13 @@ public:
 		int result = 0;
 		int findEnd = false;
 
-		std::string::const_iterator charEnd, charBeg, sEnd = s.end();
+		std::string::const_iterator charEnd, charBeg = s.begin() , sEnd = s.end();
 
-		for (auto it = sEnd - 1; it != s.begin(); --it)
+		for (auto it = sEnd; it != s.begin(); --it)
 		{
 			if (!findEnd)
 			{
-				if (*it != ' ')
+				if (*it-1 != ' ')
 				{
 					charEnd = it;
 					findEnd = true;
@@ -24,7 +24,7 @@ public:
 			}
 			else
 			{
-				if (*it == ' ')
+				if (*it-1 == ' ')
 				{
 					charBeg = it;
 					break;
