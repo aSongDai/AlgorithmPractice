@@ -28,7 +28,7 @@ public:
 		k %= listLength;
 		if (k == 0)	return head;
 
-		auto [newTail, tail] = findNewTail(head, k);
+		auto [newTail, tail] = findNewTail(head, listLength - k);
 		result = getNewList(head, newTail, tail);
 
 		return result;
@@ -36,12 +36,14 @@ public:
 
 	std::pair<ListNode*, ListNode*> findNewTail(ListNode* head, int k)
 	{
+		std::cout << "Head will move to right: " << k << std::endl;
 		ListNode* tail = head, *newTail = head;	
 		while(tail->next != nullptr)
 		{
 			tail = tail->next;
 		}
-		while (k--)
+		std::cout << "Head's tail is: " << tail->val << std::endl;
+		while (--k)
 		{
 			newTail = newTail->next;
 		}
