@@ -6,6 +6,7 @@ class Solution
 public:
 	std::vector<unsigned int> find_nums(const std::vector<unsigned int>& nums)
 	{
+		// 
 		std::vector<unsigned int> result;
 		std::unordered_map<unsigned int, int> record;
 		int minNum = INT_MAX;
