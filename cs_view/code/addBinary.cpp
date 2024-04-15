@@ -3,46 +3,23 @@
 class Solution
 {
 public:
-	std::string addBinary(const std::string& a, const std::string& b)
+	std::string addBinary(std::string a, std::string b)
 	{
 		std::string result;
 
 		int lenA = a.size(), lenB = b.size();
-		int count = 0;
-
-		int n = lenA < lenB ? lenA : lenB;
-		auto ap = a.end() - 1, bp = b.end() - 1;
-		while (n--)
+		int carry = 0;
+		std::reverse(a.begin(), a.end());
+		std::reverse(b.begin(), b.end());
+		int n = std::max(lenA, lenB);
+		for (int i = 0; i < n; ++i)
 		{
-			int temp = *ap - '0' + *bp - '0' + count;
-			if (temp > 1)
-			{
-				count = 1;
-				result.push_back(temp % 2 + '0');
-			}
-			else
-			{
-				count = 0;
-				result.push_back(temp + '0');
-			}
+			carry += i < lenA ? (a.at(i) == '1') : 0;
+			carry += i < lenB ? (b.at(i) == '1') : 0;
+			result.push_back((carry % 2) ? '1' : '0');
+			carry /= 2;
 		}
-		if (ap == a.begin())
-		{
-			// bp
-			while (bp != b.begin())
-			{
-
-			}
-		}
-		else
-		{
-			// ap
-			while (ap != a.begin())
-			{
-
-			}
-		}
-
+		if (carry)	result.push_back('1');
 		std::reverse(result.begin(), result.end());
 
 		return result;

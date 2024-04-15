@@ -15,12 +15,12 @@ public:
 		for (const auto& ch : t)
 			++target[ch];
 
-		int len = INT_MAX, l = 0, r = 0;
+		int len = INT_MAX, l = 0, r = -1;
 		int resL = -1, resR = -1;
 
 		while (r < lenS)
 		{
-			if (origin.find(s[r]) != origin.end())
+			if (target.find(s[++r]) != target.end())
 			{
 				++origin[s[r]];
 			}
@@ -32,13 +32,12 @@ public:
 					resL = l;
 				}
 				// Ëõ¶Ì½á¹û
-				if (origin.find(s[l]) != origin.end())
+				if (target.find(s[l]) != target.end())
 				{
 					--origin[s[l]];
 				}
 				++l;
 			}
-			++r;
 		}
 		return resL == -1 ? "" : s.substr(resL, len);
 	}
