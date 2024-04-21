@@ -17,6 +17,10 @@
 
 #include <vector>
 
+/*
+	NOT_FIN
+*/
+
 using State = std::vector<std::vector<int>>;
 
 class Solution
@@ -27,3 +31,10 @@ public:
 
 	}
 };
+
+
+int main()
+{
+	Solution solution;
+
+}
